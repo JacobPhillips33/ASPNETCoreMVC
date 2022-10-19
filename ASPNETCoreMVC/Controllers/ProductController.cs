@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASPNETCoreMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASPNETCoreMVC.Controllers
@@ -25,6 +26,23 @@ namespace ASPNETCoreMVC.Controllers
         {
             var product = _repo.GetProduct(id);
             return View(product);
+        }
+
+        public IActionResult UpdateProduct(int id)
+        {
+            var product = _repo.GetProduct(id);
+            if (product == null)
+            {
+                return View("Product not found.");
+            }
+            return View(product);
+        }
+
+        public IActionResult UpdateProductToDatabase(Product product)
+        {
+            _repo.UpdateProduct(product);
+
+            return RedirectToAction("ViewProduct", new { id = product.ProductID });
         }
     }
 }
