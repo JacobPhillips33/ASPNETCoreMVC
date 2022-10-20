@@ -58,5 +58,12 @@ namespace ASPNETCoreMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult DeleteProduct(Product productToDelete)
+        {
+            _repo.DeleteProduct(productToDelete);
+
+            return RedirectToAction("Index");
+        }
     }
 }
