@@ -15,4 +15,10 @@ html {
 
 body {
   margin-bottom: 60px;
+  background: grey;
+  color: white;
+}
+
+td, td a, th, a {
+    color: white;
 }
